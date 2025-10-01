@@ -69,10 +69,8 @@ def roll_to_next_business_day(workbook_path, business_date_str):
         messagebox.showerror("Error", f"Base path does not exist: {base_path}")
         raise ValueError(f"Base path does not exist: {base_path}")
     
-    # Create folder structure (YYYY/MM.MMM)
-    year_folder = business_date.strftime("%Y")
-    month_folder = business_date.strftime("%m.%b")
-    folder_path = os.path.join(base_path, year_folder, month_folder)
+    # Create folder structure
+    folder_path = os.path.join(base_path)
     os.makedirs(folder_path, exist_ok=True)
     logging.info(f"Created folder structure: {folder_path}")
     
@@ -143,4 +141,5 @@ def main():
         messagebox.showerror("Error", f"An unexpected error occurred: {str(e)}")
 
 if __name__ == "__main__":
+
     main()
